@@ -1,0 +1,49 @@
+@model GroupPost
+@{   
+    ViewBag.Title = "Post Details";   
+} 
+<style>
+    img {
+    border-radius: 8px;
+}
+
+    </style>
+  
+    <section class="blog_area p_120 single-post-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+       					<div class="main_blog_details">
+       						
+       						<h4>@Model.Title</h4>
+       						<div class="user_details">
+       							<div class="float-left">
+       								<a href="#">Lifestyle</a>
+       								<a href="#">Gadget</a>
+       							</div>
+       							<div class="float-right">
+       								<div class="media">
+       									<div class="media-body">
+       										
+       										<p>@Model.Date</p>
+       									</div>
+       									
+       								</div>
+       							</div>
+       						</div>
+       						<p> @Html.Raw(Model.Description)</p>
+      						<div class="news_d_footer">
+      								<div class="news_socail ml-auto">
+									<a ><i class="fa fa-user"></i></a>
+									<a ><i class="fa fa-tv"></i></a>
+                                   
+									
+								</div>
+      						</div>
+       					</div>
+                     </div>
+                 </div>
+</div>
+</div>
+</div>
+</section>

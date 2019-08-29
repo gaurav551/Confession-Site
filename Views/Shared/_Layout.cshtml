@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NepConfess -
+        @ViewData["mem"]
+        @ViewData["Profile"]
+    </title>
+
+    
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <script src="/js/all.js"></script>
+   
+    
+
+   
+    <link rel="stylesheet" href="~/css/site.css" />
+         <link rel="stylesheet" href="/css/style.css">
+       
+     <link href="/css/blog.css" rel="stylesheet"/>
+</head>
+<body>
+      <div class="container">
+  <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Post" asp-action="Index" > <h3 style="color:grey; "> NEPCONFESS</h3></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        
+                        <li class="nav-item">
+                            <a class="btn btn-outline-info" asp-area="" asp-controller="Post" asp-action="MyPosts">My Posts</a>
+                        </li>
+                  
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Profile" asp-action="Index">Profile</a>
+                        </li>
+                        <li>
+                        <a asp-controller="Notification" asp-action="Index" class="nav-link text-dark">
+  Notifications <span class="badge badge-light">4</span>
+                        </a>
+
+</li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Community
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/Forum">Forum</a>
+          <a class="dropdown-item" asp-controller="Groups" asp-action="Index">Groups</a>
+          
+          <a class="dropdown-item" asp-action="Members" asp-controller="Profile">Members</a>
+          
+        </div>
+      </li>
+       <li class="nav-item">
+                            <a class="nav-link text-dark"  asp-controller="Discussion" asp-action="Index">Discussion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+     
+      
+      <a class="p-2 text-muted" href="#">Startups</a>
+     
+
+
+      <a class="p-2 text-muted" href="#">Tech.</a>
+      <a class="p-2 text-muted" href="#">Design</a>
+       <a  class="btn btn-sm btn-outline-secondary" asp-action="New" asp-controller="Post">Write a Post</a>
+</nav>
+  </div>
+
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+<footer class="blog-footer">
+  <p>Nep Confession  2019  Made With <a href="../../../../getbootstrap_default.html">Bootstrap</a> <a href="https://twitter.com/mdo"></a>.</p>
+  
+</footer>
+   
+
+    
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        
+       <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    
+       
+        
+       
+   
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

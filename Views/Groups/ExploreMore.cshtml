@@ -1,0 +1,23 @@
+@model Group
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">@Model.GroupName</h1>
+      <p class="lead text-muted">@Model.GroupDescription</p>
+      <p>
+        <a asp-action="NewGroupPost" asp-route-id="@Model.Id" asp-controller="Groups" class="btn btn-primary my-2">Create a Post</a> ||
+        <a asp-action="Create" asp-controller="Groups" class="btn btn-secondary my-2">Secondary action</a>
+      </p>
+    </div>
+  </section>
+  @foreach (var x in ViewBag.groupposts)
+{
+<h3 ><a asp-action="Details" asp-controller="Groups" asp-route-id="@x.Id">@x.Title</a></h3>
+		              
+										<p >
+		              		<span><i class="fa fa-clock"></i>@x.Date</span>
+		              		<span><i class="fa fa-comment"></i>5 Comment</span>
+                      	<span><i class="fa fa-user"></i>@x.UserName</span>
+		              	</p>
+	              	<p class="mb-4">@Html.Raw(x.Description.Length>119? x.Description.Substring(0,118)+"...": x.Description)</p>
+		             
+<hr>}

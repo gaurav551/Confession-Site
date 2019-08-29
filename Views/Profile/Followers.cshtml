@@ -1,0 +1,13 @@
+@model List<Follower>
+    <div class="alert alert-primary" role="alert">
+   @Model.Count Followers
+</div>
+  
+
+    @foreach (var x in Model)
+    {
+        @x.UserName.Split('@')[0]
+        <hr>
+    }
+<h1 style="font-family:monospace">Hello Follower</h1>
+   

@@ -1,0 +1,50 @@
+@model QForum
+
+<br>
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+<h1>@Model.Question</h1>
+
+<p>@Model.Description</p>
+
+
+<hr>
+<h4> @ViewBag.a Answers </h4>
+@foreach (var x in ViewBag.answer)
+{
+  <div class="alert alert-secondary" role="alert">
+  <h4 class="alert-heading" style="text-transform:capitalize">@x.UserName.Split('@')[0]</h4>
+  <p> @x.Answer</p>
+  <hr>
+  <p class="mb-0">Votes : @x.Votes , Answered on @x.Date</p>
+</div>
+  
+
+ 
+ 
+}
+
+<!-- Answer -->
+<form asp-action="Answer" asp-controller="Forum" method="Post">
+    
+          <input type="hidden" name="Qforumid" value="@Model.Id">
+        <textarea type="text" class="form-control" name="answer" rows="4" cols="10" placeholder="Your answer"> </textarea> 
+        <input type="submit" value="Post answer">
+
+</form>
+    </div>
+     <div class="col-md-4 blog-main">
+       <br>
+       
+      <h1>Sidebar Here</h1>
+      <hr>
+     </div>
+  </div>
+</main>
+
+
+
+
+
+

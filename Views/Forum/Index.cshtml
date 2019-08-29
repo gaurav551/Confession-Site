@@ -1,0 +1,48 @@
+
+@model List<QForum>
+
+
+            
+               <a  class="btn btn-sm btn-outline-secondary" asp-action="Ask" asp-controller="Forum">Ask a question</a>
+               
+              
+                 <hr> 
+
+
+
+         @foreach (var x in Model)  
+         {  
+ <div class="card">
+  <div class="card-header">
+    @x.Tags
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p> <a asp-action="Question" asp-controller="Forum" asp-route-id="@x.Id" >@x.Question </a> </p>
+      
+      
+      <footer class="blockquote-footer"> @x.Date Asked By  <i class="fa fa-user"></i>@x.UserName   <i class="fa fa-comment"> </i>   6 answers   
+     Category : Programming </footer>
+    </blockquote>
+  </div>
+</div>
+ }
+        
+                 <div>
+         
+                                                     <label >
+                                    <span>Viewing Questions - 1 through 8 (of 8 total)</span>
+
+                                    <a href="topics.html#" ><i class="fa fa-caret-left"></i></a>
+                                    <input type="number" name="page-count" value="01">
+                                    <a href="topics.html#" ><i class="fa fa-caret-right"></i></a>
+
+                                    <span>08</span>
+                                </label>
+                            </div>
+                           
+                      
+                      
+                 
+
+

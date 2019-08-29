@@ -1,0 +1,190 @@
+
+
+<style>
+  img {
+    border-radius: 18px;
+}
+</style>
+@model Profile
+
+<br>
+<br>
+@if(Model == null)
+{
+ 
+     
+<div class="alert alert-danger" role="alert">
+  Why Havent You created a profile yet? <span> Click <a asp-controller="Profile" asp-action="New">Me </a> To Create A new One </span>!
+</div>
+}
+else
+{
+    {
+    ViewData["Profile"] = @Model.DisplayName;
+}
+ <div class="cover--header pt--80 text-center"  data-overlay="0.6" data-overlay-color="white">
+            <div class="container">
+                <div class="cover--avatar online" data-overlay="0.3" data-overlay-color="primary">
+                    <img src="/userimages/@Model.ImageUrl" height="100px" width="100px" alt="">
+                </div>
+
+                <div class="cover--user-name">
+                    <h2 class="h3 fw--600">@Model.DisplayName</h2>
+                </div>
+
+                <div class="cover--user-activity">
+                    <p><i class="fa fa-clock"></i>Active member since @Model.Date.ToString("dd, MMMM yyyy")</p>
+                </div>
+
+                <div class="cover--user-desc fw--400 fs--18 fstyle--i text-darkest">
+                    <p>@Model.Bio</p>
+                </div>
+            </div>
+        </div>
+        <!-- Cover Header End -->
+
+        <!-- Page Wrapper Start -->
+        <section class="page--wrapper pt--80 pb--20">
+            <div class="container">
+                <div class="row">
+                    <!-- Main Content Start -->
+                    <div class="main--content col-md-8 pb--60" >
+                        <div class="main--content-inner drop--shadow">
+                          
+                            <!-- Profile Details Start -->
+                            <div class="profile--details fs--14">
+                                <!-- Profile Item Start -->
+                                <div class="profile--item">
+                                    <div class="profile--heading">
+                                        <h3 class="h4 fw--700">
+                                            <span class="mr--4">About Me</span>
+                                            <i class="ml--10 text-primary fa fa-caret-right"></i>
+                                        </h3>
+                                    </div>
+
+                                    <div class="profile--info">
+                                        <table class="table">
+                                            <tr>
+                                                <th class="fw--700 text-darkest">Full Name</th>
+                                                <td><a href="member-profile.html#" class="btn-link">@Model.DisplayName</a></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="fw--700 text-darkest">Skill</th>
+                                                <td>@Model.Skill</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="fw--700 text-darkest">Date of Birth</th>
+                                                <td>@Model.DateOfBirth</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- Profile Item End -->
+
+                                <!-- Profile Item Start -->
+                                <div class="profile--item">
+                                    <div class="profile--heading">
+                                        <h3 class="h4 fw--700">
+                                            <span class="mr--4">Biography</span>
+                                            <i class="ml--10 text-primary fa fa-caret-right"></i>
+                                        </h3>
+                                    </div>
+
+                                    <div class="profile--info">
+                                        <p>Hello ! I’m <a href="member-profile.html#">@Model.DisplayName</a>. @Model.Bio</p>
+                                    </div>
+                                </div>
+                                <!-- Profile Item End -->
+
+                                <!-- Profile Item Start -->
+                                <div class="profile--item">
+                                    <div class="profile--heading">
+                                        <h3 class="h4 fw--700">
+                                            <span class="mr--4">Work Experience</span>
+                                            <i class="ml--10 text-primary fa fa-caret-right"></i>
+                                        </h3>
+                                    </div>
+
+                                    <div class="profile--info">
+                                        <dl>
+                                            <dt>
+                                                <p class="h6 fw--700 text-darkest">Graphic Designer 2010 - 2012</p>
+                                                <p><small class="fw--400 fs--12 text-darker">Graphicriver.net at Sydney</small></p>
+                                            </dt>
+                                            <dd>
+                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour which don't look even slightly believable.</p>
+                                            </dd>
+
+                                            <dt>
+                                                <p class="h6 fw--700 text-darkest">Font-End Developer 2012 - 2014</p>
+                                                <p><small class="fw--400 fs--12 text-darker">Themeforest.net at Australia</small></p>
+                                            </dt>
+                                            <dd>
+                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour which don't look even slightly believable.</p>
+                                            </dd>
+
+                                            <dt>
+                                                <p class="h6 fw--700 text-darkest">Web Developer 2014 - Still Now</p>
+                                                <p><small class="fw--400 fs--12 text-darker">Codecanyon.net at Sydney</small></p>
+                                            </dt>
+                                            <dd>
+                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour which don't look even slightly believable.</p>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <!-- Profile Item End -->
+
+                                <!-- Profile Item Start -->
+                                <div class="profile--item">
+                                    <div class="profile--heading">
+                                        <h3 class="h4 fw--700">
+                                            <span class="mr--4">Contact</span>
+                                            <i class="ml--10 text-primary fa fa-caret-right"></i>
+                                        </h3>
+                                    </div>
+
+                                    <div class="profile--info">
+                                        <table class="table">
+                                            <tr>
+                                                <th class="fw--700 text-darkest">Phone</th>
+                                                <td><a >@Model.Phone</a></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="fw--700 text-darkest">E-mail</th>
+                                                <td><a ><span class="__cf_email__" >@Model.Email</span></a></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="fw--700 text-darkest">Website</th>
+                                                <td><a \>@Model.Website</a></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="fw--700 text-darkest">Address</th>
+                                                <td>@Model.Address</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- Profile Item End -->
+                            </div>
+                            <!-- Profile Details End -->
+                        </div>
+                        
+                    </div>
+                    <div class="main--sidebar col-md-4 pb--60" >
+                    <div class="widget">
+                            <h2 class="h4 fw--700 widget--title">Notice</h2>
+
+                            <!-- Text Widget Start -->
+                            <div class="text--widget">
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some  look even slightly believable.</p>
+                            </div>
+                            <!-- Text Widget End -->
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+        
+        }

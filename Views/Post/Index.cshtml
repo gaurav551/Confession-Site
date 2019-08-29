@@ -1,0 +1,150 @@
+   @model List<Post>
+   <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .p{
+        width:100%;
+      }
+      media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <head>
+    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template -->
+   
+  </head>
+  <body>
+  @if(ViewBag.one!=null)
+  {
+  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 font-italic">@ViewBag.One.Title</h1>
+      <p class="lead my-3"></p>
+      <p class="lead my-3">@Html.Raw(ViewBag.one.Description.Length>119? ViewBag.one.Description.Substring(0,118)+"...": ViewBag.one.Description)</p>
+      
+      <p class="lead mb-0"><a asp-action="Details" asp-controller="Post" asp-route-id="@ViewBag.one.Id" class="text-white font-weight-bold">Continue reading...</a></p>
+    </div>
+  </div>
+  }
+
+  <div class="row mb-2">
+
+    @foreach (var x in ViewBag.two)
+    {
+        
+    
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">@x.Category</strong>
+          <h3 class="mb-0">@x.Title</h3>
+          
+
+          <div class="mb-1 text-muted">@x.Date.ToString("MMMM dd, yyyy") by 
+             @if(x.Author=="Anonymous")
+          {
+         
+             <a style="color:black">@x.Author </a>
+          }
+          else
+          {
+            <a asp-action="AuthorProfile" asp-controller="Profile" asp-route-userid="@x.UserId"> @x.Author </a>
+          }</div>
+          <p class="card-text mb-auto">@Html.Raw(x.Description.Length>100? x.Description.Substring(0,99) +"...": x.Description)</p>
+          <a asp-action="Details" asp-controller="Post" asp-route-id="@x.Id" >Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+        Post From Popular Author
+      </h3>
+@foreach (var x in Model)
+{
+    
+
+
+        <div class="blog-post">
+        <h2 class="blog-post-title">@x.Title</h2>
+        <p class="blog-post-meta">@x.Date by
+          @if(x.Author=="Anonymous")
+          {
+             <a style="color:black">@x.Author </a>
+          }
+          else 
+          {
+        <a asp-action="AuthorProfile" asp-controller="Profile" asp-route-userid="@x.UserId"  >@x.Author</a>
+           } </p>
+       
+         @Html.Raw(x.Description.Length>300? x.Description.Substring(0,299): x.Description)   
+   <a asp-action="Details" asp-controller="Post" asp-route-id="@x.Id">  Continue reading</a>
+       </div>
+       }<!-- /.blog-post -->
+   
+      <!-- /.blog-post -->
+
+      <nav class="blog-pagination">
+        <a class="btn btn-outline-primary" asp-action="Details" asp-controller="Post" asp-route-id="">Older</a>
+        <a class="btn btn-outline-secondary disabled" asp-action="Details" asp-controller="Post" asp-route-id="" tabindex="-1" aria-disabled="true">Newer</a>
+      </nav>
+
+    </div><!-- /.blog-main -->
+
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="font-italic">About</h4>
+        <p class="mb-0">This Site is dedicated to motivate nepali youth, by connecting and sharing ideas, business and entreprenership </p>
+      </div>
+
+      <div class="p-4">
+        <h4 class="font-italic">Archives</h4>
+        <ol class="list-unstyled mb-0">
+          <li><a asp-action="Details" asp-controller="Post" asp-route-id="">March 2014</a></li>
+          <li><a href="blog.html#">February 2014</a></li>
+          <li><a href="blog.html#">January 2014</a></li>
+          <li><a href="blog.html#">December 2013</a></li>
+          <li><a href="blog.html#">November 2013</a></li>
+          <li><a href="blog.html#">October 2013</a></li>
+          <li><a href="blog.html#">September 2013</a></li>
+          <li><a href="blog.html#">August 2013</a></li>
+          <li><a href="blog.html#">July 2013</a></li>
+          <li><a href="blog.html#">June 2013</a></li>
+          <li><a href="blog.html#">May 2013</a></li>
+          <li><a href="blog.html#">April 2013</a></li>
+        </ol>
+      </div>
+
+      <div class="p-4">
+        <h4 class="font-italic">Elsewhere</h4>
+        <ol class="list-unstyled">
+          <li><a href="blog.html#">GitHub</a></li>
+          <li><a href="blog.html#">Twitter</a></li>
+          <li><a href="blog.html#">Facebook</a></li>
+        </ol>
+      </div>
+    </aside><!-- /.blog-sidebar -->
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+
+</body>
+</html>

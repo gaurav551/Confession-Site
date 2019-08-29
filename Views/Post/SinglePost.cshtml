@@ -1,0 +1,19 @@
+
+      
+     
+  
+  @model Post
+<div class="jumbotron">
+<h1 style="text-transform:Capitalize;"> @Model.Title </h1>
+<div class="mb-1 text-muted">@Model.Date</div> by <i class="fa fa-user"> </i> @Model.Author
+</div>
+<hr>
+ 
+<div class="container" >
+<p style="text-size:2px;">
+@Html.Raw(Model.Description)
+</p>
+
+10 <i class="fa fa-eye"> </i>   10 <i class="fa fa-user "> </i>
+ </div>
+

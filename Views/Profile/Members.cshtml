@@ -1,0 +1,45 @@
+@model List<Profile>
+@{
+    ViewData["mem"] = "Members";
+}
+
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy  @User.Identity.Name.Split('@')[0]</strong> Thank You for being a part of this community
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@for(int i = 1; i<=12; i++)
+{
+<div class="spinner-border text-primary" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-secondary" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-success" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-danger" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-warning" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-info" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-dark" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+
+}
+<br>
+   @foreach (var x in Model)
+    {
+        @x.DisplayName
+        <hr>
+    }
+
+  

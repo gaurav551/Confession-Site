@@ -1,0 +1,41 @@
+@model Profile
+<div class="jumbotron">
+<form  asp-action="NewProfile" asp-controller="Profile" enctype="multipart/form-data">
+  <div class="row">
+    
+    <div class="col-md-6">
+         <input type="hidden" class="form-control"  placeholder="First name">
+      <input type="text" class="form-control" asp-for="DisplayName" placeholder="DisplayName">
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" asp-for="Bio" placeholder="Bio">
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" asp-for="Phone" placeholder="Phone">
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" asp-for="Email" placeholder="Email">
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" asp-for="Address" placeholder="Address">
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" asp-for="Website" placeholder="Website">
+    </div>
+    <div class="col-md-6">
+      <input type="date" class="form-control" asp-for="DateOfBirth" placeholder="DateOfBirth">
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" asp-for="Skill" placeholder="Skill">
+    </div>
+    
+    <div class="custom-file">
+    <input  class="custom-file-input" type="file" name="pic" accept="image/*" >
+    <label class="custom-file-label" >Chose post photo...</label>
+   
+</div>
+  </div>
+ 
+  <input type="submit" value="Create" class="btn btn-primary"/>
+</form>
+ </div>

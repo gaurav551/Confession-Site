@@ -1,0 +1,48 @@
+@model List<Post>
+ <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .p{
+        width:100%;
+      }
+      media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+@foreach(var x in Model)
+{
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 font-italic">@x.Title</h1>
+      <p class="lead my-3">@Html.Raw(x.Description.Length>119? x.Description.Substring(0,118)+"...": x.Description)</p>
+      <p class="lead mb-0"><a asp-action="Details" asp-controller="Post" asp-route-id="@x.Id" class="text-white font-weight-bold">Continue reading...</a></p>
+    </div>
+  </div>
+}
+
+
+<!-- <iframe src="https://localhost:5001/" width="100%" height="1000px"></iframe> -->
+
+<script type="text/javascript">
+  function onoff()
+  {
+    currentvalue = document.getElementById('onoff').value;
+    if (currentvalue == "Off"){
+      document.getElementById("onoff").value="On";
+      
+    }
+    else
+    {
+      document.getElementById("onoff").value="Off";
+    }
+  }
+</script>
+<input type="button" class="btn btn-success" value="On" id="onoff" onclick="onoff();"/>

@@ -1,0 +1,140 @@
+@model Post
+@{   
+    ViewBag.Title = "Post Details";   
+} 
+<style>
+    img {
+    border-radius: 8px;
+}
+</style>
+  @TempData["c"]
+    <section class="blog_area p_120 single-post-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+       					<div class="main_blog_details">
+       						
+       						<h4>@Model.Title</h4>
+       						<div class="user_details">
+       							<div class="float-left">
+       								<a href="#">@Model.Category</a>
+       								
+       							</div>
+       							<div class="float-right">
+       								<div class="media">
+       									<div class="media-body">
+       										<h5>@Model.Author</h5>
+       										<p>@Model.Date</p>
+       									</div>
+       									<div class="d-flex">
+       										<img src="/userimages/@ViewBag.userpic" height="40px" width="40px" alt="">
+       									</div>
+       								</div>
+       							</div>
+       						</div>
+       						<p> @Html.Raw(Model.Description)</p>
+      						<div class="news_d_footer">
+      							<a asp-action="Like" asp-controller="Post" asp-route-id="@Model.Id"> <i class="fa fa-heart" ></i>  @ViewBag.likes </a>
+                                 
+      							<a class="justify-content-center ml-auto" href="#"><i class="fa fa-comment"></i>@ViewBag.comments.Count Comments <i class="fa fa-eye"> </i> @ViewBag.postcount views</a> 
+      							<div class="news_socail ml-auto">
+									<a ><i class="fa fa-user"></i></a>
+									<a ><i class="fa fa-tv"></i></a>
+                                   
+									
+								</div>
+      						</div>
+       					</div>
+       					
+                        <div class="comments-area">
+                            <h4>@ViewBag.comments.Count Comments</h4>
+                            @foreach (var x in ViewBag.comments)
+                            {
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                       
+                                        <div class="desc">
+                                            <h5><a href="#">@x.CommentBy.Split('@')[0]</a></h5>
+                                            <p class="date">@x.DaTe </p>
+                                            <p class="comment">
+                                                @x.CommentText
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="reply-btn">
+                                           <a asp-action="DeleteComment" asp-controller="Post" asp-route-id="@x.Id" class="btn-reply text-uppercase">Delete</a> 
+                                           <a href="" class="btn-reply text-uppercase">Edit</a> 
+                                    </div>
+                                </div>
+                            </div>	
+                            }
+                           	
+                            	
+                                                                        				
+                        </div>
+                        <div class="comment-form">
+                            <h4>Leave a Reply</h4>
+                            <form asp-action="NewComment" asp-controller="Post" method="Post">
+                               <input type="hidden" name="postId" id="postId" value="@Model.Id"/>
+                              
+                                <div class="form-group">
+                                    <textarea class="form-control mb-10" rows="5" name="commenttext" placeholder="Reply" ></textarea>
+                                   
+                                </div>
+                                <input type="submit" value=" Comment" class="primary-btn submit_btn"/>
+                                </form>
+                        </div>
+        			</div>
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single_sidebar_widget search_widget">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search Posts">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
+                                    </span>
+                                </div><!-- /input-group -->
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single_sidebar_widget author_widget">
+                                <img class="author_img img-fluid" src="/userimages/@ViewBag.userpic"  height="100px" alt="">
+                                <h4>@ViewBag.displayname</h4>
+                                <p>Senior blog writer</p>
+                                <div class="social_icon">
+                                    <a href="#"><i class="fa fa-clock"></i></a>
+                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                    <a href="#"><i class="fa fa-car"></i></a>
+                                    <a href="#"><i class="fa fa-user"></i></a>
+                                </div>
+                                <p>@ViewBag.bio</p>
+                                <div class="br"></div>
+                            </aside>
+                           @if(ViewBag.postbyauthor!=null)
+                           {
+                            <aside class="single_sidebar_widget popular_post_widget">
+                                <h3 class="widget_title">Popular Posts By @ViewBag.displayname</h3>
+                                @foreach(var x in ViewBag.postbyauthor)
+                                    {
+                                <div class="media post_item">
+                                  <div class="media-body">
+                                        <a href="blog-details.html"><h3>@x.Title</h3></a>
+                                        <p>@x.Date</p>
+                                    </div>
+                                </div>
+                                    }
+                              
+                                
+                                
+                                <div class="br"></div>
+                            </aside>
+                           }
+                           
+                                                   </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+       

@@ -1,0 +1,95 @@
+@model List<Group>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      
+      
+      
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+  
+  
+    <header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">What you can do with groups</h4>
+          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="album.html#" class="text-white">Follow on Twitter</a></li>
+            <li><a href="album.html#" class="text-white">Like on Facebook</a></li>
+            <li><a href="album.html#" class="text-white">Email me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container d-flex justify-content-between">
+      <a href="album.html#" class="navbar-brand d-flex align-items-center">
+         <i class="fa fa-users"> </i>
+        <strong>Groups</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Groups Example</h1>
+      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <p>
+        <a asp-action="NewGroup" asp-controller="Groups" class="btn btn-primary my-2">Create a group</a> or
+        <a asp-action="Create" asp-controller="Groups" class="btn btn-secondary my-2">Manage Groups</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+        @foreach(var x in Model)
+        {
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img  class="bd-placeholder-img card-img-top" width="100%" height="225" src="/groupimages/@x.ImageUrl" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"> </img>
+            <div class="card-body">
+              <h1>  @x.GroupName</h1>
+              
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a  asp-controller="Groups" asp-action="ExploreMore" asp-route-id="@x.Id" class="btn btn-sm btn-outline-secondary">Explore More</a>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Join</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+        
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
